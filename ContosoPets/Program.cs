@@ -251,7 +251,7 @@ do {
 							Console.WriteLine($"Enter a physical description for {currentID} (size, color, gender, weight, housebroken)");
 							readResult = Console.ReadLine();
 							if (readResult != null) {
-								animalPhysicalDescription = readResult.ToLower();
+								animalPhysicalDescription = readResult.Trim().ToLower();
 							}
 						} while (string.IsNullOrEmpty(animalPhysicalDescription) == true);
 						ourAnimals[i, 4] = "Physical description: " + animalPhysicalDescription;
