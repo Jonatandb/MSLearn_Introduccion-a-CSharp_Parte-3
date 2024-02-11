@@ -227,14 +227,15 @@ do {
 			// Ensure animal ages and physical descriptions are complete
 
 			for (int i = 0; i < maxPets; i++) {
-				if (ourAnimals[i, 0] != "ID #: ") {
+				string currentID = ourAnimals[i, 0];
+				if (currentID != "ID #: ") {
 
 					if (ourAnimals[i, 2] == "Age: ?") {
 						bool validEntry = false;
 						// Ask for the pet's age.
 						int petAge;
 						do {
-							Console.WriteLine($"Enter an age for ID #: {ourAnimals[i, 0]}");
+							Console.WriteLine($"Enter an age for ID #: {currentID}");
 							readResult = Console.ReadLine();
 							if (readResult != null) {
 								animalAge = readResult;
@@ -242,6 +243,18 @@ do {
 							}
 						} while (validEntry == false);
 						ourAnimals[i, 2] = "Age: " + animalAge;
+					}
+
+					if (ourAnimals[i, 4] == "Physical description: tbd" || ourAnimals[i, 4] == "Physical description: ") {
+						// Ask for a description of the pet's physical appearance/condition.
+						do {
+							Console.WriteLine($"Enter a physical description for {currentID} (size, color, gender, weight, housebroken)");
+							readResult = Console.ReadLine();
+							if (readResult != null) {
+								animalPhysicalDescription = readResult.ToLower();
+							}
+						} while (string.IsNullOrEmpty(animalPhysicalDescription) == true);
+						ourAnimals[i, 4] = "Physical description: " + animalPhysicalDescription;
 					}
 
 				}
