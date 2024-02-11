@@ -235,7 +235,7 @@ do {
 						// Ask for the pet's age.
 						int petAge;
 						do {
-							Console.WriteLine($"Enter an age for ID #: {currentID}");
+							Console.WriteLine($"Enter an age for {currentID}");
 							readResult = Console.ReadLine();
 							if (readResult != null) {
 								animalAge = readResult;
